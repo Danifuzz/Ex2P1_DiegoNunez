@@ -9,5 +9,8 @@ package ex2p1_diegonunez;
  * @author nunez
  */
 public class Musicos {
-    
+    int dni;
+    String nombre;
+    String instrumento;
+    int edad;
 }
