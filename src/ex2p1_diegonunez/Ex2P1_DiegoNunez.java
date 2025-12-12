@@ -22,20 +22,19 @@ public class Ex2P1_DiegoNunez {
         if (juego == 1) {
             respuesta = 's';
             System.out.println("Comencemos haciendo tu primer Musico:");
-            Musicos Diego = crearMusicos();
+            MusicM Diego = crearMusicos();
             Principal(Diego);
         }
 
     }
 
-    public static void Micancion() {
-        System.out.println("\n"
+    public static void playSong() {
+        System.out.println("Parabola...\n"
                 + "We barely remember\n"
                 + "Who or what came before this precious moment\n"
                 + "We are choosing to be here right now\n"
                 + "Hold on, stay inside\n"
                 + "\n"
-                + "[Pre-Chorus]\n"
                 + "This holy reality\n"
                 + "This holy experience\n"
                 + "Choosing to be here in\n"
@@ -47,7 +46,7 @@ public class Ex2P1_DiegoNunez {
                 + "\n"
                 + "Alive\n"
                 + "\n"
-                + "[Pre-Chorus]\n"
+
                 + "In this holy reality\n"
                 + "In this holy experience\n"
                 + "Choosing to be here in\n"
@@ -56,15 +55,7 @@ public class Ex2P1_DiegoNunez {
                 + "Be my reminder here that I am not alone in\n"
                 + "This body, this body holding me\n"
                 + "Feeling eternal, all this pain is an illusion\n"
-                + "See Tool Live\n"
-                + "Get tickets as low as $12\n"
-                + "You might also like\n"
-                + "Parabol\n"
-                + "Tool\n"
-                + "Schism\n"
-                + "Tool\n"
-                + "Lateralus\n"
-                + "Tool\n"
+
                 + "Twirling 'round with this familiar parable\n"
                 + "Spinning, weaving 'round each new experience\n"
                 + "Recognize this as a holy gift and\n"
@@ -73,10 +64,11 @@ public class Ex2P1_DiegoNunez {
                 + "\n"
                 + "This body holding me reminds me of my own mortality\n"
                 + "Embrace this moment, remember\n"
-                + "We are eternal, all this pain is an illusion");
+                + "We are eternal, all this pain is an illusion"
+                + "\n");
     }
 
-    public static Musicos crearMusicos() {
+    public static MusicM crearMusicos() {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese el nombre ");
         String nombre = entrada.next();
@@ -88,7 +80,7 @@ public class Ex2P1_DiegoNunez {
         System.out.println("Ingrese el instrumento: ");
         String instrumento = entrada.next();
 
-        Musicos Musico = new Musicos();
+        MusicM Musico = new MusicM();
         Musico.nombre = nombre;
         Musico.edad = edad;
         Musico.instrumento = instrumento;
@@ -96,7 +88,7 @@ public class Ex2P1_DiegoNunez {
         return (Musico);
     }
 
-    public static void Principal(Musicos Persona) {
+    public static void Principal(MusicM Persona) {
 
         ArrayList<String> nombres = new ArrayList<String>();
         ArrayList<Integer> ID = new ArrayList<>();
@@ -140,19 +132,31 @@ public class Ex2P1_DiegoNunez {
                 instrumento.add(instrumentol);
                 System.out.println("Se ingreso el musico correctamente");
             } else if (opcion == 2) {
+                
+                if (nombres.size()>=1) {
                 System.out.println("Ingrese la posicion del miembro:");
+                
                 for (int i = 0; i < nombres.size(); i++) {
                     System.out.println("->" + nombres.get(i));
                 }
                 int posicion = entrada.nextInt();
                 System.out.println(nombres.get(posicion));
                 System.out.println(ID.get(posicion));
-                System.out.println(Persona.edad);
+                System.out.println(edad.get(posicion));
                 System.out.println(instrumento.get(posicion));
+                } else {
+                    System.out.println("no hay miembros que seleccionar");
+                }
+                
             } else if (opcion == 3) {
-                System.out.println(nombres.get(0) + "esta usando el/la" + instrumento.get(0) + "para la siguiente cancion:");
-                Micancion();
+                if (nombres.size()>=1) {
+                System.out.println(nombres.get(0) + " esta usando el/la " + instrumento.get(0) + "para la siguiente cancion:");
+                playSong();
+                } else {
+                    System.out.println("No hay miembros que puedan cantar.");
+                }
             } else if (opcion == 4) {
+                if (nombres.size()>=1) {
                 System.out.println("Miembros de la banda:");
                 for (int i = 0; i < nombres.size(); i++) {
                     System.out.println("->" + nombres.get(i));
@@ -164,6 +168,9 @@ public class Ex2P1_DiegoNunez {
                 edad.remove(posicion);
                 instrumento.remove(posicion);
                 System.out.println("Se elimino el miembro de la banda.");
+                } else {
+                    System.out.println("No hay miembros que eliminar.");
+                }
             } else if (opcion == 5) {
                 nombres.clear();
                 instrumento.clear();
@@ -174,6 +181,16 @@ public class Ex2P1_DiegoNunez {
 
             System.out.print("Desea seguir editando? [s/n]:");
             respuesta = entrada.next().charAt(0);
+            if (respuesta != 's') {
+                System.out.println("1. Let's Make Music");
+        System.out.println("0. Salir");
+        int juego = entrada.nextInt();
+        if (juego == 1) {
+            continue;
+        } else {
+            break;
+        }
+            }
         }
 
     }

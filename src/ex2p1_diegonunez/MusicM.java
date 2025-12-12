@@ -8,7 +8,10 @@ package ex2p1_diegonunez;
  *
  * @author nunez
  */
-public class Musicos {
+public class MusicM {
+    /* "Cada línea de código que escribes es un paso más hacia convertirte en el programador que
+    sueñas ser. Confía en ti: cada problema que enfrentes es una oportunidad para aprender o
+    triunfar." */
     int dni;
     String nombre;
     String instrumento;
